@@ -1,5 +1,5 @@
-import { RepoOwner } from "./types";
 import { ChildProcess } from "child_process";
+import { RepoOwner } from "./types";
 
 export function getRepoAndOwner(
   input: string,

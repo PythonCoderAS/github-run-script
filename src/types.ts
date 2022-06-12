@@ -1,6 +1,8 @@
 export interface CliFlags {
   owner?: string;
   search?: string | string[];
+  terminate?: string | boolean;
+  signal?: string;
   _: string[];
 }
 
