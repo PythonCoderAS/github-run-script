@@ -1,7 +1,7 @@
 {
-  "name": "<package-name>",
+  "name": "github-run-script",
   "version": "1.0.0",
-  "description": "<package-description>",
+  "description": "Run a script on multiple repositories, cloning them if needed.",
   "main": "dist/index.js",
   "type": "commonjs",
   "types": "dist/index.d.ts",
@@ -16,16 +16,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PythonCoderAS/<package-name>.git"
+    "url": "git+https://github.com/PythonCoderAS/github-run-script.git"
   },
   "keywords": [],
   "author": "PythonCoderAS",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PythonCoderAS/<package-name>/issues"
+    "url": "https://github.com/PythonCoderAS/github-run-script/issues"
   },
-  "homepage": "https://github.com/PythonCoderAS/<package-name>#readme",
+  "homepage": "https://github.com/PythonCoderAS/github-run-script#readme",
   "dependencies": {
+    "array-string-map": "^3.0.0",
+    "node-filter-async": "^2.0.0",
+    "sade": "^1.8.1"
   },
   "devDependencies": {
     "@types/chai": "^4.3.1",
