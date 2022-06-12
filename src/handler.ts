@@ -25,15 +25,15 @@ export default async function handler(script: string, flags: CliFlags) {
     const directoryMapping: ArrayStringMap<RepoOwner, string> =
       new ArrayStringMap();
     const scanDirectories: Map<string, string[]> = new Map();
-    if (flags.searchPath) {
+    if (flags.search) {
       // If it's one path, it won't be in an array. This converts it into an array.
-      if (typeof flags.searchPath === "string") {
-        flags.searchPath = [flags.searchPath];
+      if (typeof flags.search === "string") {
+        flags.search = [flags.search];
       }
       // What this code block does is simple. It stores in `scanDirectories`
       // a mapping of source path name to an array of directories in that directory.
       await Promise.all(
-        flags.searchPath.map(async (path) => {
+        flags.search.map(async (path) => {
           scanDirectories.set(
             path,
             await filterAsync(await readdir(path), async (item) => {
@@ -52,6 +52,7 @@ export default async function handler(script: string, flags: CliFlags) {
         for (const [path, directories] of scanDirectories) {
           for (const directory of directories) {
             if (repo === directory) {
+              console.log(`Found ${repo} in ${path}`);
               directoryMapping.set([owner, repo], path);
               break;
             }

@@ -1,6 +1,6 @@
 export interface CliFlags {
   owner?: string;
-  searchPath?: string | string[];
+  search?: string | string[];
   _: string[];
 }
 
