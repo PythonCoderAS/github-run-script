@@ -27,7 +27,7 @@
   "homepage": "https://github.com/PythonCoderAS/github-run-script#readme",
   "dependencies": {
     "array-string-map": "^3.0.0",
-    "node-filter-async": "^2.0.0",
+    "node-filter-async": "^3.0.0",
     "sade": "^1.8.1"
   },
   "devDependencies": {
