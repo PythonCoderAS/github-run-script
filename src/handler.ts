@@ -75,7 +75,7 @@ export default async function handler(script: string, flags: CliFlags) {
           for (const directory of directories) {
             if (repo === directory) {
               console.log(`Found ${repo} in ${path}`);
-              directoryMapping.set([owner, repo], path);
+              directoryMapping.set([owner, repo], `${path}/${repo}`);
               break;
             }
           }
