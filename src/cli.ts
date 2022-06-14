@@ -11,10 +11,7 @@ const cli = sade("github-run-script <script>", true)
     "-o, --owner",
     "The owner for repositories without an explicit owner."
   )
-  .option(
-    "-s, --search-path",
-    "A path to search for already-cloned repositories."
-  )
+  .option("-s, --search", "A path to search for already-cloned repositories.")
   .option("-t, --terminate", "Terminate any spawned processes on error.")
   .option("--signal", "The signal to terminate a process with.")
   .action(handler);
