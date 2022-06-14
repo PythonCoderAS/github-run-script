@@ -16,7 +16,7 @@ const cli = sade("github-run-script <script>", true)
     "A path to search for already-cloned repositories."
   )
   .option("-t, --terminate", "Terminate any spawned processes on error.")
-  .option("-s, --signal", "The signal to terminate a process with.")
+  .option("--signal", "The signal to terminate a process with.")
   .action(handler);
 
 export default cli;
