@@ -1,7 +1,7 @@
 import { ChildProcess } from "child_process";
-import { GenerateTemplateCliFlags, RepoOwner, Template } from "./types";
 import { mkdtemp } from "fs/promises";
 import { tmpdir } from "os";
+import { GenerateTemplateCliFlags, RepoOwner, Template } from "./types";
 
 export function getRepoAndOwner(
   input: string,

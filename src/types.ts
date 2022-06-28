@@ -27,7 +27,9 @@ export interface Template {
   defaultFileName: string;
 
   arguments?: (string | { name: string; description?: string })[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   flags?: (string | { name: string; description?: string; value?: any })[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handler: (...args: any[]) => any;
 }
 

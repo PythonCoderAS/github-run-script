@@ -17,7 +17,7 @@ async function spawn(command: string, args?: string[], options?: object) {
   return childProcess;
 }
 
-// eslint-disable-next-line no-undef -- NodeJS is a fake namespace by TypeScript.
+
 function terminateSpawnCache(signal: NodeJS.Signals = "SIGTERM") {
   for (const childProcess of spawnedProcesses.keys()) {
     childProcess.kill(signal);
@@ -118,7 +118,7 @@ export default async function handler(script: string, flags: CliFlags) {
     );
   } finally {
     if (flags.terminate ?? true) {
-      // eslint-disable-next-line no-undef -- NodeJS is a fake namespace by TypeScript.
+
       terminateSpawnCache(flags.signal as NodeJS.Signals);
     }
 

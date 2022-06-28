@@ -1,14 +1,14 @@
-import { Template } from "./types";
 import { Sade } from "sade";
+import { Template } from "./types";
 import templates from "./templates";
 
 function generateCLIFromTemplate(sade: Sade, template: Template): Sade {
   const argString: string = template.arguments
-    ? " " +
+    ? ` ${
       template.arguments
         .map((arg) => (typeof arg === "string" ? { name: arg } : arg))
         .map((arg) => `<${arg.name}>`)
-        .join(" ")
+        .join(" ")}`
     : "";
   sade = sade.command(
     `template ${template.name}${argString}`,
@@ -37,5 +37,6 @@ export default function main(sade: Sade): Sade {
   for (const template of templates) {
     sade = generateCLIFromTemplate(sade, template);
   }
+
   return sade;
 }

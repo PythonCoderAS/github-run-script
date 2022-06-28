@@ -1,11 +1,13 @@
+import { writeFile } from "fs/promises";
 import { GenerateTemplateCliFlags, Template } from "../types";
 import { getOutputPath } from "../utils";
-import { writeFile } from "fs/promises";
 
 export default class CpTemplate implements Template {
   readonly name = "copy";
+
   readonly description =
     "A template to copy a signle source file to multiple repositories and commit the changes.";
+
   readonly aliases = ["cp"];
 
   readonly defaultFileName = "cp.sh";
