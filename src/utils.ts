@@ -1,5 +1,7 @@
 import { ChildProcess } from "child_process";
-import { RepoOwner } from "./types";
+import { GenerateTemplateCliFlags, RepoOwner, Template } from "./types";
+import { mkdtemp } from "fs/promises";
+import { tmpdir } from "os";
 
 export function getRepoAndOwner(
   input: string,
@@ -27,4 +29,15 @@ export async function waitOnChildProcessToExit(process: ChildProcess) {
     process.on("exit", resolve);
     process.on("error", reject);
   });
+}
+
+export async function getOutputPath(
+  template: Template,
+  flags: GenerateTemplateCliFlags
+) {
+  let { outputDir, outputFile } = flags;
+  outputDir =
+    outputDir ?? (await mkdtemp(`${tmpdir()}/github-run-script-template-`));
+  outputFile = outputFile ?? template.defaultFileName;
+  return `${outputDir}/${outputFile}`;
 }
