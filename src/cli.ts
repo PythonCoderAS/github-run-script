@@ -2,7 +2,6 @@ import * as sade from "sade";
 import handler from "./handler";
 import addTemplates from "./template";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires -- Needed in order to not copy over package.json and make new src directory inside of dist
 const { version, description } = require("../package.json");
 
 let cli = sade("github-run-script")

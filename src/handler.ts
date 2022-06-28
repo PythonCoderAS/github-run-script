@@ -17,7 +17,6 @@ async function spawn(command: string, args?: string[], options?: object) {
   return childProcess;
 }
 
-
 function terminateSpawnCache(signal: NodeJS.Signals = "SIGTERM") {
   for (const childProcess of spawnedProcesses.keys()) {
     childProcess.kill(signal);
@@ -118,7 +117,6 @@ export default async function handler(script: string, flags: CliFlags) {
     );
   } finally {
     if (flags.terminate ?? true) {
-
       terminateSpawnCache(flags.signal as NodeJS.Signals);
     }
 

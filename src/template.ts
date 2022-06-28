@@ -4,8 +4,7 @@ import templates from "./templates";
 
 function generateCLIFromTemplate(sade: Sade, template: Template): Sade {
   const argString: string = template.arguments
-    ? ` ${
-      template.arguments
+    ? ` ${template.arguments
         .map((arg) => (typeof arg === "string" ? { name: arg } : arg))
         .map((arg) => `<${arg.name}>`)
         .join(" ")}`
