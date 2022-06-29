@@ -28,12 +28,12 @@ export default class CpTemplate implements Template {
     },
   ];
 
-  async handler(
+  readonly handler = async (
     source_file: string,
     dest_path: string,
     commit_message: string,
     flags: GenerateTemplateCliFlags
-  ) {
+  ) => {
     const templateString = `
 #!/bin/bash
 $FILE="${source_file}"
@@ -47,5 +47,5 @@ git push
     const outputPath = await getOutputPath(this, flags);
     await writeFile(outputPath, templateString);
     console.log(`Output log written to: ${outputPath}`);
-  }
+  };
 }
