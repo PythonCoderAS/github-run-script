@@ -49,6 +49,7 @@ git push
     if (process.platform !== "win32") {
       await chmod(outputPath, "755");
     }
+
     console.log(`Output log written to: ${outputPath}`);
   };
 }
