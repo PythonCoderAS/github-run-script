@@ -35,9 +35,9 @@ export default class CpTemplate implements Template {
     flags: GenerateTemplateCliFlags
   ) => {
     const templateString = `#!/bin/bash
-$FILE="${source_file}"
-$RELATIVE_DEST="${dest_path}"
-$COMMIT_MESSAGE="${commit_message}"
+FILE="${source_file}"
+RELATIVE_DEST="${dest_path}"
+COMMIT_MESSAGE="${commit_message}"
 git pull
 cp -r $FILE "$RELATIVE_DEST"
 git add "$RELATIVE_DEST"
