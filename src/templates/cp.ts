@@ -38,10 +38,11 @@ export default class CpTemplate implements Template {
 #!/bin/bash
 $FILE="${source_file}"
 $RELATIVE_DEST="${dest_path}"
+$COMMIT_MESSAGE="${commit_message}"
 git pull
-cp -r $FILE $RELATIVE_DEST
-git add $RELATIVE_DEST
-git commit -m "${commit_message}"
+cp -r $FILE "$RELATIVE_DEST"
+git add "$RELATIVE_DEST"
+git commit -m "$COMMIT_MESSAGE"
 git push
 `;
     const outputPath = await getOutputPath(this, flags);
