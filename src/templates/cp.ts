@@ -1,4 +1,4 @@
-import { writeFile } from "fs/promises";
+import { chmod, writeFile } from "fs/promises";
 import { GenerateTemplateCliFlags, Template } from "../types";
 import { getOutputPath } from "../utils";
 
@@ -34,8 +34,7 @@ export default class CpTemplate implements Template {
     commit_message: string,
     flags: GenerateTemplateCliFlags
   ) => {
-    const templateString = `
-#!/bin/bash
+    const templateString = `#!/bin/bash
 $FILE="${source_file}"
 $RELATIVE_DEST="${dest_path}"
 $COMMIT_MESSAGE="${commit_message}"
@@ -47,6 +46,9 @@ git push
 `;
     const outputPath = await getOutputPath(this, flags);
     await writeFile(outputPath, templateString);
+    if (process.platform !== "win32") {
+      await chmod(outputPath, "755");
+    }
     console.log(`Output log written to: ${outputPath}`);
   };
 }
