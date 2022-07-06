@@ -1,7 +1,6 @@
-import { exec } from "child_process";
-import { promisify } from "util";
 import { expect, use } from "chai";
 import chaiAsPromised = require("chai-as-promised");
+import { runScript, runScriptOutput } from "subprocess-test-utils";
 
 use(chaiAsPromised);
 
@@ -10,32 +9,14 @@ use(chaiAsPromised);
  * @param args
  */
 async function runCommandWithArgs(args: string[]): Promise<boolean> {
-  const childProcPromise = promisify(exec)(
-    ["node", "dist/index.js", ...args].join(" ")
-  );
-  try {
-    await childProcPromise;
-  } catch (e: unknown) {
-    return false;
-  }
-
-  return true;
+  return runScript("node", ["dist/index.js", ...args]);
 }
 
 async function runCommandWithArgsForOutput(
   args: string[]
 ): Promise<{ stdout: string; stderr: string }> {
-  const childProcPromise = promisify(exec)(
-    ["node", "dist/index.js", ...args].join(" ")
-  );
-  try {
-    return await childProcPromise;
-  } catch (e: any) {
-    // Error object has stdout/stderr
-    return e;
-  }
+  return runScriptOutput("node", ["dist/index.js", ...args]);
 }
-
 describe("github-run-script base tests", () => {
   it("should not run with no arguments", () =>
     expect(runCommandWithArgs([])).to.eventually.equal(false));
