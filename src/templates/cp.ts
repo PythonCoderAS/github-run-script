@@ -1,4 +1,5 @@
 import { chmod, writeFile } from "fs/promises";
+
 import { GenerateTemplateCliFlags, Template } from "../types";
 import { getOutputPath } from "../utils";
 

@@ -1,10 +1,11 @@
-import { mkdtemp, readdir, stat, rm } from "fs/promises";
-import { ChildProcess, spawn as actualSpawn } from "child_process";
 import ArrayStringMap from "array-string-map";
+import { ChildProcess, spawn as actualSpawn } from "child_process";
+import { mkdtemp, readdir, rm, stat } from "fs/promises";
 import filterAsync from "node-filter-async";
 import { tmpdir } from "os";
-import { getRepoAndOwner, waitOnChildProcessToExit } from "./utils";
+
 import { CliFlags, RepoOwner } from "./types";
+import { getRepoAndOwner, waitOnChildProcessToExit } from "./utils";
 
 // We need to make a spawn cache. If an exception is thrown,
 // we need to be able to comply with the --terminate flag..

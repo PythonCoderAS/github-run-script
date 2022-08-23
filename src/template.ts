@@ -1,6 +1,7 @@
 import { Sade } from "sade";
-import { Template } from "./types";
+
 import templates from "./templates";
+import { Template } from "./types";
 
 function generateCLIFromTemplate(sade: Sade, template: Template): Sade {
   const argString: string = template.arguments
