@@ -23,7 +23,7 @@ Run a script on multiple repositories, cloning them if needed.
 The script gets run with additional environment variables.
 
 | Environment Variable Name | Description                                                                                         |
-|---------------------------|-----------------------------------------------------------------------------------------------------|
+| ------------------------- | --------------------------------------------------------------------------------------------------- |
 | `REPO_OWNER`              | The owner of the repository                                                                         |
 | `REPO_NAME`               | The name of the repository                                                                          |
 | `REPO`                    | The value of "`REPO_OWNER`/`REPO_NAME`"                                                             |

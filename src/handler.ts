@@ -27,6 +27,7 @@ function terminateSpawnCache(signal: NodeJS.Signals = "SIGTERM") {
 export default async function handler(script: string, flags: CliFlags) {
   const { owner: defaultOwner, _: repoNames } = flags;
   let { search } = flags;
+  const quiet = !!flags.quiet;
   const repos: RepoOwner[] = [];
   for (const repoName of repoNames) {
     try {
@@ -74,7 +75,10 @@ export default async function handler(script: string, flags: CliFlags) {
         for (const [path, directories] of scanDirectories) {
           for (const directory of directories) {
             if (repo === directory) {
-              console.log(`Found ${repo} in ${path}`);
+              if (!quiet) {
+                console.log(`Found ${repo} in ${path}`);
+              }
+
               directoryMapping.set([owner, repo], `${path}/${repo}`);
               break;
             }
@@ -90,10 +94,18 @@ export default async function handler(script: string, flags: CliFlags) {
         // Deal wit the special case where we did not find a match. Time to clone.
         if (!directoryMapping.has([owner, repo])) {
           const destPath = `${tempDir}/${repo}`;
-          console.log(`Cloning ${owner}/${repo} to ${destPath}`);
+          if (!quiet) {
+            console.log(`Cloning ${owner}/${repo} to ${destPath}`);
+          }
+
           const childProc = await spawn(
             "git",
-            ["clone", `https://github.com/${owner}/${repo}.git`, destPath],
+            [
+              "clone",
+              "-q",
+              `https://github.com/${owner}/${repo}.git`,
+              destPath,
+            ],
             { stdio: "inherit" }
           );
           await waitOnChildProcessToExit(childProc);

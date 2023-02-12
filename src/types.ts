@@ -6,6 +6,7 @@ export interface CliFlags extends BaseCliFlags {
   owner?: string;
   search?: string | string[];
   terminate?: string | boolean;
+  quiet?: string | boolean;
   signal?: string;
 }
 

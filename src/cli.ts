@@ -17,6 +17,11 @@ let cli = sade("github-run-script")
   )
   .option("-s, --search", "A path to search for already-cloned repositories.")
   .option("-t, --terminate", "Terminate any spawned processes on error.")
+  .option(
+    "-q",
+    "--quiet",
+    "Do not make any output that isn't from the invoked scripts."
+  )
   .option("--signal", "The signal to terminate a process with.")
   .action(handler);
 
