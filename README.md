@@ -17,3 +17,14 @@ Run a script on multiple repositories, cloning them if needed.
     -v, --version        Displays current version
     -h, --help           Displays this message
 ```
+
+## Environment variables
+
+The script gets run with additional environment variables.
+
+| Environment Variable Name | Description                                                                                         |
+|---------------------------|-----------------------------------------------------------------------------------------------------|
+| `REPO_OWNER`              | The owner of the repository                                                                         |
+| `REPO_NAME`               | The name of the repository                                                                          |
+| `REPO`                    | The value of "`REPO_OWNER`/`REPO_NAME`"                                                             |
+| `REPO_PATH`               | The path to the repository on the filesystem. The same path as the working directory of the script. |
