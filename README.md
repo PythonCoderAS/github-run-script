@@ -2,7 +2,7 @@
 
 Run a script on multiple repositories, cloning them if needed.
 
-**NOTE:** The script *has to* be an **absolute path**, otherwise it will fail.
+**NOTE:** The script _has to_ be an **absolute path**, otherwise it will fail.
 
 ```
   Description
